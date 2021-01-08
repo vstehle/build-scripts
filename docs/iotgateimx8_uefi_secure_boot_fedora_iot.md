@@ -15,6 +15,20 @@ And flash the ISO to an USB stick.
 
 ## Pre-setting
 
+Before using UEFI secure boot, things in this section needs to be run
+once.
+
+### Sync the RTC from NTP server
+
+We better to set the RTC from the NTP server for a correct time.
+
+1. setenv autoload 0; dhcp
+2. setenv ntpserverip 118.163.81.61
+3. date reset
+4. sntp
+
+### Setting UEFI keys
+
 This section describes how to import the UEFI secure boot keys into
 U-boot. Once the keys are set, it cannot be changed anymore until you
 clean the eMMC.
