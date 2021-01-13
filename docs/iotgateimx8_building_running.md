@@ -120,7 +120,7 @@ And you should get flash.bin for replacing the one on board.
 ## Building Debian related images
 
 ### Linux
-Source: https://source.codeaurora.org/external/imx/linux-imx.git
+Source: https://git.linaro.org/people/paul.liu/systemready/linux.git
 Branch: linux-compulab
 Result: Image sb-iotgimx8.dtb
 
