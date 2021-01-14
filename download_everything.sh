@@ -18,6 +18,6 @@ else
     git clone https://git.linaro.org/people/paul.liu/systemready/u-boot.git
 fi
 
-git -C u-boot checkout iot-gate-imx8-paulliu-next-oldusb-capsule-rtc-reset-uefisecboot
+git -C u-boot checkout iot-gate-imx8-paulliu-master-oldusb-rtc-reset-uefisecboot
 
 
