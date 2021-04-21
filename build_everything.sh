@@ -4,12 +4,12 @@ cd imx-optee-os
 ../build_optee.sh
 cd ..
 
-cd trusted-firmware-a
-../build_atf.sh
+cd u-boot
+../build_uboot.sh
 cd ..
 
-cd uboot-imx
-../build_uboot.sh
+cd trusted-firmware-a
+../build_atf.sh
 cd ..
 
 cd imx-mkimage
@@ -19,3 +19,7 @@ cd ..
 FLASHBIN=`find imx-mkimage -name flash.bin`
 
 echo "$FLASHBIN"
+
+if [ $USER = paulliu ]; then
+    cp -f "$FLASHBIN" /tmp
+fi

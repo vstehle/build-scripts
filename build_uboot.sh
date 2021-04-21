@@ -15,7 +15,9 @@ export CROSS_COMPILE=aarch64-linux-gnu-
 
 make O="$B" imx8mp_rsb3720a1_6G_defconfig
 cat <<EOF > "${B}"/extraconfig
-CONFIG_SPL_LEGACY_IMAGE_SUPPORT=y
+CONFIG_FASTBOOT_FLASH_MMC_DEV=2
+CONFIG_SPL_DM=y
+CONFIG_USB_XHCI_IMX8M=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig
 if [ -e ../imx-mkimage/firmware-imx-8.10/firmware/ddr/synopsys/ddr3_dmem_1d.bin ]; then
