@@ -14,7 +14,7 @@ git -C mbedtls checkout development
 
 # imx-mkimage
 git clone https://git.linaro.org/people/paul.liu/systemready/non-free/imx-mkimage.git
-git -C imx-mkimage checkout rel_imx_5.4.24_2.1.0
+git -C imx-mkimage checkout paulliu-imx8-1
 
 # U-boot
 if [ $USER = paulliu ]; then
