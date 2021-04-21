@@ -21,5 +21,5 @@ FLASHBIN=`find imx-mkimage -name flash.bin`
 echo "$FLASHBIN"
 
 if [ $USER = paulliu ]; then
-    cp -f "$FLASHBIN" /tmp
+    atftp -p -l "$FLASHBIN" -r flash.bin 192.168.66.10
 fi
