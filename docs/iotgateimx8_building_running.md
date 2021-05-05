@@ -15,8 +15,8 @@ Format the USB stick with VFAT.
 
 Download https://drive.google.com/file/d/14dD9sFTsZ5kfJrhrlahp1P0SrcAx9aKa/view?usp=sharing
 
-Flash the SDCard by “sudo dd if=flash.bin of=/dev/sdX bs=1K seek=33 status=progress”
-Put flash.bin on USB Stick VFAT partition too.
+Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=66 status=progress; dd if=u-boot.itb of=/dev/sdX bs=512 seek=768"
+Put flash.bin and u-boot.itb on USB Stick VFAT partition too.
 
 Insert the SDCard to P14. Insert the USB stick to the USB-A hole on the front panel.
 
@@ -26,12 +26,14 @@ Insert the SDCard to P14. Insert the USB stick to the USB-A hole on the front pa
  2. Close Jumper E1
  3. Power on the machine
  4. Stop the U-boot auto boot by pressing Enter
- 5. You should be U-boot prompt now “IOT-GATE-iMX8 =>”
- 6. Run “usb reset”
- 7. Run “load usb 0 ${loadaddr} flash.bin”
- 8. Run “mmc dev 2 1; mmc write ${loadaddr} 0x42 0x1B00”
- 9. Power off the machine
- 10. Open Jumper E1
+ 5. You should be U-boot prompt now "IOT-GATE-iMX8 ="
+ 6. Run "usb reset"
+ 7. Run "load usb 0 ${loadaddr} flash.bin"
+ 8. Run "mmc dev 2 1; mmc write ${loadaddr} 0x42 0x250"
+ 9. Run "load usb 0 ${loadaddr} u-boot.itb"
+ 10. Run "mmc dev 2 1; mmc write ${loadaddr} 0x300 0x1B00"
+ 11. Power off the machine
+ 12. Open Jumper E1
 
 
 ## Building boot images
@@ -45,7 +47,7 @@ Result: u-boot.bin
 
 Steps:
  1. git clone https://git.linaro.org/people/paul.liu/systemready/u-boot.git
- 2. git -C u-boot checkout iot-uboot
+ 2. git -C u-boot checkout iot-gate-imx8-paulliu-master
  3. mkdir -p /tmp/u-boot-imx
  4. make -C u-boot O=/tmp/u-boot-imx ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- iot-gate-imx8_defconfig
  5. make -C u-boot O=/tmp/u-boot-imx ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
@@ -80,7 +82,7 @@ Output: bl2.bin fip.bin
 
 Steps:
  1. git clone https://git.linaro.org/people/paul.liu/systemready/trusted-firmware-a.git
- 2. git -C trusted-firmware-a checkout imx8-tbbr-2
+ 2. git -C trusted-firmware-a checkout imx8-tbbr-3
  3. git clone https://github.com/ARMmbed/mbedtls.git
  4. make -C trusted-firmware-a ARCH=aarch64 CROSS_COMPILE=aarch64-linux-gnu- \
     PLAT=imx8mm \
@@ -99,23 +101,13 @@ You should get bl2.bin and fip.bin in trusted-firmware-a/build/imx8mm/release/
 
 ### Flash.bin
 
-Source: https://git.linaro.org/people/paul.liu/systemready/non-free/imx-mkimage.git
+We will use u-boot's binman to generate flash.bin
+Source: as same as u-boot
 Input: bl2.bin fip.bin u-boot-spl.bin
 Result: flash.bin
 Pre-built image: https://drive.google.com/file/d/14dD9sFTsZ5kfJrhrlahp1P0SrcAx9aKa/view?usp=sharing
 
-Steps:
- 1. git clone https://git.linaro.org/people/paul.liu/systemready/non-free/imx-mkimage.git
- 2. git -C imx-mkimage checkout paulliu-imx8-1
- 3. cd imx-mkimage
- 4. sed "s/\(^dtbs = \).*/\1${MACHINE}.dtb/;s/\(mkimage\)_uboot/\1/;s/\(^TEE_LOAD_ADDR \).*/\1= 0x7e000000/g" soc.mak > Makefile
- 5. make clean
- 6. # put bl2.bin as bl31.bin
- 7. # put fip.bin
- 8. # put u-boot-spl.bin
- 9. make flash_evk SOC=iMX8MM
-
-And you should get flash.bin for replacing the one on board.
+And you should get flash.bin and u-boot.itb for replacing the one on board.
 
 ## Building Debian related images
 
@@ -160,6 +152,3 @@ Steps:
  2. export CROSS_COMPILE=aarch64-linux-gnu-
  3. make iot-gate-imx8_defconfig
  4. make LOCALVERSION=.paulliu-1-arm64 KDEB_PKGVERSION=$(make kernelversion)-1 deb-pkg
-
-
-
