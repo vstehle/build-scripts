@@ -13,7 +13,7 @@ We flash the sdcard first currently.
 
 First, prepare a SDCard.
 
-Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=64 status=progress"
+Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=64 status=progress; sudo dd if=flash.bin of=/dev/sdX bs=512 seek=768 status=progress"
 
 Insert the SDCard.
 
@@ -29,11 +29,13 @@ Power on.
  4. Stop the U-boot auto boot by pressing Enter
  5. You should be U-boot prompt now "u-boot =>"
  6. Run "tftp ${loadaddr} flash.bin"
- 7. Run "mmc dev 2 0; mmc write ${loadaddr} 0x40 0x1B00"
- 8. Reset the machine
+ 7. Run "mmc dev 2 0; mmc write ${loadaddr} 0x40 0x250"
+ 8. Run "tftp ${loadaddr} u-boot.itb"
+ 9. Run "mmc dev 2 0; mmc write ${loadaddr} 0x300 0x1B00"
+ 10. Reset the machine
 
 ## Building firmware image
 
  1. Run ./download_everything.sh
  2. Run ./build_everything.sh
- 3. You should get the flash.bin from ./imx-mkimage/iMX8M/flash.bin
+ 3. You should get the flash.bin and u-boot.itb from /tmp/uboot-imx8mp

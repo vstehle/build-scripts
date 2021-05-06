@@ -12,4 +12,8 @@ export CROSS_COMPILE64=aarch64-linux-gnu-
 #     CFG_TEE_CORE_DEBUG=y \
 #     CFG_DEBUG_INFO=y
 
-env CFG_TEE_CORE_LOG_LEVEL=3 ./scripts/nxp_build.sh mx8mpevk
+env CFG_TEE_CORE_LOG_LEVEL=2 \
+    CFG_DT_ADDR=0x52000000 \
+    CFG_EXTERNAL_DTB_OVERLAY=y \
+    CFG_DT=y \
+    ./scripts/nxp_build.sh mx8mpevk

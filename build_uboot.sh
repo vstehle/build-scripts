@@ -16,24 +16,9 @@ export CROSS_COMPILE=aarch64-linux-gnu-
 make O="$B" imx8mp_rsb3720a1_6G_defconfig
 cat <<EOF > "${B}"/extraconfig
 CONFIG_FASTBOOT_FLASH_MMC_DEV=2
-CONFIG_SPL_DM=y
 CONFIG_USB_XHCI_IMX8M=y
+CONFIG_RTC_EMULATION=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig
-if [ -e ../imx-mkimage/firmware-imx-8.10/firmware/ddr/synopsys/ddr3_dmem_1d.bin ]; then
-    cp -f ../imx-mkimage/firmware-imx-8.10/firmware/ddr/synopsys/*.bin ${B}
-fi
+export ATF_LOAD_ADDR=0x960000
 make O="$B"
-export ATF_LOAD_ADDR=0x00960000
-export TEE_LOAD_ADDR=0x56000000
-BL31_PATH="../trusted-firmware-a/build/imx8mp/release/bl31.bin"
-if [ -e "$BL31_PATH" ]; then
-    cp -f "$BL31_PATH" "$B"/bl31.bin
-fi
-BL32_PATH="../imx-optee-os/build.mx8mpevk/tee.bin"
-if [ -e "$BL32_PATH" ]; then
-    cp -f "$BL32_PATH" "$B"/tee.bin
-fi
-if [ -e ${B}/ddr3_dmem_1d.bin -a -e ${B}/bl31.bin ]; then
-    make O="$B" flash.bin
-fi

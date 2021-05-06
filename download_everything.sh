@@ -11,10 +11,7 @@ git -C trusted-firmware-a checkout paulliu-imx8mp-tbbr
 
 git clone https://github.com/ARMmbed/mbedtls.git
 git -C mbedtls checkout development
-
-# imx-mkimage
-git clone https://git.linaro.org/people/paul.liu/systemready/non-free/imx-mkimage.git
-git -C imx-mkimage checkout paulliu-imx8-1
+git -C mbedtls checkout f08ec01e2b4b3c91af8d822a1cdf17c8a5577035 -b test1
 
 # U-boot
 if [ $USER = paulliu ]; then
