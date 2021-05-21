@@ -39,3 +39,18 @@ Power on.
  1. Run ./download_everything.sh
  2. Run ./build_everything.sh
  3. You should get the flash.bin and u-boot.itb from /tmp/uboot-imx8mp
+
+## Debian installer
+
+We have to use custom kernel with Debian installer right now.
+The master kernel (checked at 79a106fc) doesn't boot.
+So we replace the kernel by a custom kernel for Debian installer.
+The Debian instller for rsb3720 can be downloaded at
+https://drive.google.com/file/d/1EkfyhY1Y8rZv_dikWGoTYiimSPjmPElK/view?usp=sharing
+
+Extraing this tarball to a USB disk should be able to install Debian.
+
+After installing Debian, please install the following kernel packages
+to boot.
+https://drive.google.com/file/d/1lltXLtLSzUJxM606xXqD81Z0hdNALeEu/view?usp=sharing
+

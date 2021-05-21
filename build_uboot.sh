@@ -17,8 +17,7 @@ make O="$B" imx8mp_rsb3720a1_6G_defconfig
 cat <<EOF > "${B}"/extraconfig
 CONFIG_FASTBOOT_FLASH_MMC_DEV=2
 CONFIG_USB_XHCI_IMX8M=y
-CONFIG_RTC_EMULATION=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig
-export ATF_LOAD_ADDR=0x960000
+export ATF_LOAD_ADDR=0x970000
 make O="$B"
