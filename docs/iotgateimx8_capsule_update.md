@@ -13,9 +13,12 @@ In U-boot prompt, run the following commands:
 
 ## Make capsule1.bin
 
-Build flash.bin first. And then use the following command to build capsule1.bin
+Build capsule1.itb first. And then use the following command to build
+capsule1.bin
 
- 1. ./tools/mkeficapsule --raw flash.bin --index 1 capsule1.bin
+ 1. Write a capsule1.its. Please see build_flashbin.sh
+ 2. mkimage -f capsule1.its capsule1.itb
+ 3. ./tools/mkeficapsule --fit capsule1.itb --index 1 capsule1.bin
 
 ## Using efidebug to directly update. (Testing purpose)
 

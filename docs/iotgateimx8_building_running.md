@@ -15,7 +15,7 @@ Format the USB stick with VFAT.
 
 Download https://drive.google.com/file/d/14dD9sFTsZ5kfJrhrlahp1P0SrcAx9aKa/view?usp=sharing
 
-Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=66 status=progress; dd if=u-boot.itb of=/dev/sdX bs=512 seek=768"
+Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=66 status=progress; sudo dd if=u-boot.itb of=/dev/sdX bs=512 seek=768"
 Put flash.bin and u-boot.itb on USB Stick VFAT partition too.
 
 Insert the SDCard to P14. Insert the USB stick to the USB-A hole on the front panel.
