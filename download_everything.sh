@@ -4,7 +4,7 @@ git clone https://git.linaro.org/people/paul.liu/systemready/optee_os.git
 git -C optee_os checkout linaro-master-cl-iot-gate
 
 git clone https://git.linaro.org/people/paul.liu/systemready/trusted-firmware-a.git
-git -C trusted-firmware-a checkout imx8-tbbr-3
+git -C trusted-firmware-a checkout paulliu-imx8mp-tbbr
 
 git clone https://github.com/ARMmbed/mbedtls.git
 git -C mbedtls checkout development
@@ -16,4 +16,4 @@ else
     git clone https://git.linaro.org/people/paul.liu/systemready/u-boot.git
 fi
 
-git -C u-boot checkout iot-gate-imx8-paulliu-master
+git -C u-boot checkout paulliu-rsb3720
