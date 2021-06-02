@@ -6,6 +6,21 @@ if [ -d build ]; then
     rm -rf build
 fi
 
+manual_config() {
+    sed -i.bak001 '/#include <platform_def.h>/a #define IMX8MP_FIP_MMAP' plat/imx/imx8m/imx8mp/imx8mp_io_storage.c
+}
+
+restore_manual_config() {
+    if [ -e plat/imx/imx8m/imx8mp/imx8mp_io_storage.c.bak001 ]; then
+	mv -f plat/imx/imx8m/imx8mp/imx8mp_io_storage.c.bak001 \
+	   plat/imx/imx8m/imx8mp/imx8mp_io_storage.c
+    fi
+}
+
+restore_manual_config
+
+manual_config
+
 make ARCH=aarch64 CROSS_COMPILE=aarch64-linux-gnu- PLAT=imx8mp \
      IMX_BOOT_UART_BASE=0x30880000 \
      SPD=opteed NEED_BL2=yes NEED_BL32=yes NEED_BL33=yes \
@@ -17,3 +32,5 @@ make ARCH=aarch64 CROSS_COMPILE=aarch64-linux-gnu- PLAT=imx8mp \
      BL32_EXTRA2=../imx-optee-os/build.mx8mpevk/core/tee-pageable_v2.bin \
      BL33=/tmp/uboot-imx8mp/u-boot.bin \
      fip bl2 bl31
+
+restore_manual_config
