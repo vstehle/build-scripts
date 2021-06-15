@@ -27,9 +27,9 @@ make ARCH=aarch64 CROSS_COMPILE=aarch64-linux-gnu- PLAT=imx8mp \
      LOG_LEVEL=50 \
      USE_TBBR_DEFS=1 GENERATE_COT=1 TRUSTED_BOARD_BOOT=1 \
      MBEDTLS_DIR=../mbedtls \
-     BL32=../imx-optee-os/build.mx8mpevk/core/tee-header_v2.bin \
-     BL32_EXTRA1=../imx-optee-os/build.mx8mpevk/core/tee-pager_v2.bin \
-     BL32_EXTRA2=../imx-optee-os/build.mx8mpevk/core/tee-pageable_v2.bin \
+     BL32=../optee_os/build.mx8mpevk/core/tee-header_v2.bin \
+     BL32_EXTRA1=../optee_os/build.mx8mpevk/core/tee-pager_v2.bin \
+     BL32_EXTRA2=../optee_os/build.mx8mpevk/core/tee-pageable_v2.bin \
      BL33=/tmp/uboot-imx8mp/u-boot.bin \
      fip bl2 bl31
 

@@ -1,9 +1,8 @@
 #!/bin/sh
 
 # OPTEE
-git clone https://source.codeaurora.org/external/imx/imx-optee-os
-git -C imx-optee-os checkout origin/imx_5.4.70_2.3.0 -b linaro-rsb3720
-sed "s/UART2_BASE/UART3_BASE/" -i imx-optee-os/core/arch/arm/plat-imx/conf.mk
+git clone https://git.linaro.org/people/paul.liu/systemready/optee_os.git
+git -C optee_os checkout paulliu-rsb3720
 
 # TF-A
 git clone https://git.linaro.org/people/paul.liu/systemready/trusted-firmware-a.git

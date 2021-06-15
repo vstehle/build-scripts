@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd imx-optee-os
+cd optee_os
 ../build_optee.sh
 cd ..
 
