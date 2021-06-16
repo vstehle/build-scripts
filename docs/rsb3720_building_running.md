@@ -13,7 +13,7 @@ We flash the sdcard first currently.
 
 First, prepare a SDCard.
 
-Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=64 status=progress; sudo dd if=flash.bin of=/dev/sdX bs=512 seek=768 status=progress"
+Flash the SDCard by "sudo dd if=flash.bin of=/dev/sdX bs=512 seek=64 status=progress; sudo dd if=u-boot.itb of=/dev/sdX bs=512 seek=768 status=progress"
 
 Insert the SDCard.
 
