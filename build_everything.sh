@@ -31,4 +31,4 @@ if [ $USER = paulliu ]; then
     atftp -p -l /tmp/uboot-imx8mp/capsule1.bin -r capsule1.bin 192.168.66.10
 fi
 
-echo "capsule: " "/tmp/uboot-imx8/capsule1.bin"
+echo "capsule: " "/tmp/uboot-imx8mp/capsule1.bin"
