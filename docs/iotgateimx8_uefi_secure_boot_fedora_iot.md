@@ -55,3 +55,23 @@ You should see IoT installer being run after reboot.
 
 If you change the USB stick with Debian installer or SCT, you should
 find that U-boot refuse to boot into it.
+
+## Sign the efi.
+
+If the efi binaries are not signed, we need to sign those binaries by
+ourselves.
+First, we run the script gen_keys_fedora_iot.sh
+And it will generate db001.key and db001.crt.
+Then we can sign any efi binaries by
+"sbsign --key db001.key --cert db001.crt --output signed.efi origin.efi"
+
+## Get certificate from a signed efi.
+
+Any signed efi if we don't have the certificate for it, we can use
+extract_cert_from_efi_binary.sh to extract the certificate.
+For example, run
+"./extract_cert_from_efi_binary.sh shimaa64.efi extra_ca_01.crt"
+
+And put extra_ca_01.crt with gen_keys_fedora_iot.sh.
+Run gen_keys_fedora_iot.sh and it will include that crt into db key
+so that we can verify the signed efi.
