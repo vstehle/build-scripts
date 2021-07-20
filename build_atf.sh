@@ -7,13 +7,13 @@ if [ -d build ]; then
 fi
 
 manual_config() {
-    sed -i.bak001 '/#include <platform_def.h>/a #define IMX8MP_FIP_MMAP' plat/imx/imx8m/imx8mp/imx8mp_io_storage.c
+    sed -i.bak001 '/#include <platform_def.h>/a #define IMX8M_FIP_MMAP' plat/imx/imx8m/imx8m_io_storage.c
 }
 
 restore_manual_config() {
-    if [ -e plat/imx/imx8m/imx8mp/imx8mp_io_storage.c.bak001 ]; then
-	mv -f plat/imx/imx8m/imx8mp/imx8mp_io_storage.c.bak001 \
-	   plat/imx/imx8m/imx8mp/imx8mp_io_storage.c
+    if [ -e plat/imx/imx8m/imx8m_io_storage.c.bak001 ]; then
+	mv -f plat/imx/imx8m/imx8m_io_storage.c.bak001 \
+	   plat/imx/imx8m/imx8m_io_storage.c
     fi
 }
 

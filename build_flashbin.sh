@@ -19,7 +19,7 @@ cp -v ../trusted-firmware-a/build/imx8mp/release/fip.bin "$B"
 
 export ARCH=arm64
 export CROSS_COMPILE=aarch64-linux-gnu-
-export ATF_LOAD_ADDR=0x970000
+export ATF_LOAD_ADDR=0x960000
 
 make O="$B"
 
