@@ -16,4 +16,5 @@ else
     git clone https://git.linaro.org/people/paul.liu/systemready/u-boot.git
 fi
 
-git -C u-boot checkout paulliu-rsb3720
+git -C u-boot checkout paulliu-rsb3720-tpm2
+
