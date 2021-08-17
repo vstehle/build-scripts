@@ -9,6 +9,7 @@ cd u-boot
 cd ..
 
 cd trusted-firmware-a
+#cd imx-atf
 ../build_atf.sh
 cd ..
 
