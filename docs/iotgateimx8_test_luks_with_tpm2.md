@@ -19,7 +19,7 @@ directly flash it to eMMC by fastboot.
 
  * xz -d Fedora-IoT-34-20210801.0.aarch64.raw.xz
  * img2simg Fedora-IoT-34-20210801.0.aarch64.raw f1.img
- * fastboot -s udp:192.168.66.103 flash raw1 f1.img
+ * fastboot -s udp:<ip_address_of_the_board> flash raw1 f1.img
 
 ## LUKS test
 
