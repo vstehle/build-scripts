@@ -19,7 +19,6 @@ cp -v ../trusted-firmware-a/build/imx8mm/release/fip.bin "$B"/fip.bin
 #cp -v ../imx-atf/build/imx8mm/release/bl2.bin "$B"/bl31.bin
 #cp -v ../imx-atf/build/imx8mm/release/fip.bin "$B"/fip.bin
 
-export ARCH=arm64
 export CROSS_COMPILE=aarch64-linux-gnu-
 export ATF_LOAD_ADDR=0x920000
 
