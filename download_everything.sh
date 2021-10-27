@@ -1,10 +1,10 @@
 #!/bin/sh
 
-git clone https://github.com/OP-TEE/optee_os.git
-git -C optee_os checkout master
+git clone https://git.linaro.org/people/paul.liu/systemready/optee_os.git
+git -C optee_os checkout paulliu-compulab-rpmb
 
 git clone https://git.linaro.org/people/paul.liu/systemready/trusted-firmware-a.git
-git -C trusted-firmware-a checkout paulliu-imx8mp-tbbr
+git -C trusted-firmware-a checkout paulliu-imx8mp-tbbr-measuredboot
 
 git clone https://github.com/ARMmbed/mbedtls.git
 git -C mbedtls checkout development

@@ -21,6 +21,8 @@ CONFIG_DM_PCA953X=y
 CONFIG_CMD_TPM_TEST=y
 CONFIG_OF_BOARD_FIXUP=y
 # CONFIG_WATCHDOG_AUTOSTART is not set
+CONFIG_CMD_OPTEE_RPMB=y
+CONFIG_EFI_MM_COMM_TEE=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig
 export ATF_LOAD_ADDR=0x920000
