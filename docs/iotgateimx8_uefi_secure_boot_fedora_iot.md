@@ -34,7 +34,7 @@ U-boot. Once the keys are set, it cannot be changed anymore until you
 clean the eMMC.
 
 First, please run gen_keys_fedora_iot.sh under uefi_secboot_keys directory.
-Put PK.auth, KEK.auth, rh_ca.auth to TFTP server.
+Put PK.auth, KEK.auth, db.auth to TFTP server.
 
 In U-boot prompt, run the following commands:
  1. setenv autoload 0; dhcp
@@ -43,7 +43,7 @@ In U-boot prompt, run the following commands:
  4. setenv -e -nv -bs -rt -at -i ${loadaddr}:$filesize PK
  5. tftp ${loadaddr} KEK.auth
  6. setenv -e -nv -bs -rt -at -i ${loadaddr}:$filesize KEK
- 7. tftp ${loadaddr} rh_ca.auth
+ 7. tftp ${loadaddr} db.auth
  8. setenv -e -nv -bs -rt -at -i ${loadaddr}:$filesize db
 
 And reset the board.
@@ -75,3 +75,13 @@ For example, run
 And put extra_ca_01.crt with gen_keys_fedora_iot.sh.
 Run gen_keys_fedora_iot.sh and it will include that crt into db key
 so that we can verify the signed efi.
+
+## Go back to setup mode
+
+Go back to setup mode means we need to remove the PK.
+It can be done by setting noPK.auth (empty esl signed by PK private key) to
+PK variable.
+However, noPK.auth must be signed with the same PK private key.
+If you lost the private key, this method is not working.
+Then you need to temporarily turn on CFG_RPMB_RESET_FAT of OpTEE to
+clear the entire rpmb.

@@ -6,7 +6,7 @@ export ARCH=arm
 export CROSS_COMPILE=arm-linux-gnueabihf-
 export CROSS_COMPILE64=aarch64-linux-gnu-
 
-ln -s ../Build/MmStandaloneRpmb/RELEASE_GCC5/FV/BL32_AP_MM.fd
+ln -sf ../Build/MmStandaloneRpmb/RELEASE_GCC5/FV/BL32_AP_MM.fd
 
 make PLATFORM=imx PLATFORM_FLAVOR=mx8mm_cl_iot_gate O=build.mx8mmevk \
      CFG_TEE_CORE_LOG_LEVEL=2 \
@@ -20,6 +20,7 @@ make PLATFORM=imx PLATFORM_FLAVOR=mx8mm_cl_iot_gate O=build.mx8mmevk \
      CFG_RPMB_FS_DEV_ID=2 \
      CFG_RPMB_WRITE_KEY=y \
      CFG_RPMB_TESTKEY=y \
+     CFG_RPMB_RESET_FAT=n \
      CFG_STMM_PATH=BL32_AP_MM.fd
 
 rm -f BL32_AP_MM.fd
