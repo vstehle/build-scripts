@@ -6,7 +6,7 @@ git -C optee_os checkout paulliu-rsb3720
 
 # TF-A
 git clone https://git.linaro.org/people/paul.liu/systemready/trusted-firmware-a.git
-git -C trusted-firmware-a checkout paulliu-imx8mp-tbbr
+git -C trusted-firmware-a checkout master
 
 git clone https://github.com/ARMmbed/mbedtls.git
 git -C mbedtls checkout development
