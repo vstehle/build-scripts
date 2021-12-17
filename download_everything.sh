@@ -13,7 +13,7 @@ git -C mbedtls checkout development
 git -C mbedtls checkout f08ec01e2b4b3c91af8d822a1cdf17c8a5577035 -b test1
 
 # U-boot
-if [ $USER = paulliu ]; then
+if [ x"$USER" = xpaulliu ]; then
     git clone --reference ~/upstream/u-boot ssh://git@git.linaro.org/people/paul.liu/systemready/u-boot.git
 else
     git clone https://git.linaro.org/people/paul.liu/systemready/u-boot.git
