@@ -7,7 +7,7 @@ if [ -d build ]; then
 fi
 
 manual_config() {
-    sed -i.bak001 '/PLAT_IMX8MM_BOOT_MMC_BASE/s/0x30B50000/0x30B60000/' plat/imx/imx8m/imx8mm/include/platform_def.h
+    echo "."
 }
 
 restore_manual_config() {
@@ -30,7 +30,7 @@ make ARCH=aarch64 CROSS_COMPILE=aarch64-linux-gnu- PLAT=imx8mm \
      BL32_EXTRA1=../optee_os/build.mx8mmevk/core/tee-pager_v2.bin \
      BL32_EXTRA2=../optee_os/build.mx8mmevk/core/tee-pageable_v2.bin \
      BL33=/tmp/uboot-imx8/u-boot.bin BL2_CFLAGS=-DIMX_FIP_MMAP \
-     MEASURED_BOOT=1 \
+     MEASURED_BOOT=1 TPM_HASH_ALG=sha256 \
      fip bl2 bl31
 
 restore_manual_config

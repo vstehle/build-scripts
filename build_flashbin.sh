@@ -14,7 +14,7 @@ cp -v $(find firmware* | awk '/train|hdmi_imx8|dp_imx8/' ORS=" ") "$B"
 
 cd "$O1"
 
-cp -v ../trusted-firmware-a/build/imx8mm/release/bl2.bin "$B"/bl2.bin
+cp -v ../trusted-firmware-a/build/imx8mm/release/bl2.bin "$B"/bl31.bin
 cp -v ../trusted-firmware-a/build/imx8mm/release/fip.bin "$B"/fip.bin
 #cp -v ../imx-atf/build/imx8mm/release/bl2.bin "$B"/bl31.bin
 #cp -v ../imx-atf/build/imx8mm/release/fip.bin "$B"/fip.bin
@@ -40,17 +40,6 @@ cat <<EOF > "$B"/capsule1.its
 		flash-bin {
 			description = "U-Boot binary on SPI Flash";
 			data = /incbin/("flash.bin");
-			compression = "none";
-			type = "firmware";
-			arch = "arm64";
-			load = <0>;
-			hash-1 {
-				algo = "sha1";
-			};
-		};
-		u-boot-itb {
-			description = "U-Boot binary";
-			data = /incbin/("u-boot.itb");
 			compression = "none";
 			type = "firmware";
 			arch = "arm64";

@@ -20,17 +20,14 @@ cd u-boot
 cd ..
 
 FLASHBIN=`find /tmp/uboot-imx8 -name flash.bin`
-UBOOTITB=`find /tmp/uboot-imx8 -name u-boot.itb`
 
 echo "flash.bin:" "$FLASHBIN"
-echo "u-boot.itb:" "$UBOOTITB"
 
-if [ $USER = paulliu ]; then
+if [ x"$USER" = x"paulliu" ]; then
     atftp -p -l "$FLASHBIN" -r flash.bin 192.168.66.10
-    atftp -p -l "$UBOOTITB" -r u-boot.itb 192.168.66.10
 fi
 
-if [ $USER = paulliu ]; then
+if [ x"$USER" = x"paulliu" ]; then
     atftp -p -l /tmp/uboot-imx8/capsule1.bin -r capsule1.bin 192.168.66.10
 fi
 

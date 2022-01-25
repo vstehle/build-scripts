@@ -26,6 +26,12 @@ sign-efi-sig-list \
     -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
     -c PK.crt -k PK.key PK PK.esl PK.auth
 
+rm -rf noPK.esl
+touch noPK.esl
+sign-efi-sig-list \
+    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+    -k PK.key -c PK.crt PK noPK.esl noPK.auth
+
 # Add MS KEK
 openssl x509 -inform der -in MicCorKEKCA2011_2011-06-24.crt -out MicCorKEKCA2011_2011-06-24-2.crt
 cert-to-efi-sig-list -g $GUID MicCorKEKCA2011_2011-06-24-2.crt KEK_MS.esl
@@ -76,12 +82,6 @@ done
 sign-efi-sig-list \
     -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
     -k KEK.key -c KEK.crt db db.esl db.auth
-
-rm -rf noPK.esl
-touch noPK.esl
-sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
-    -k PK.key -c PK.crt PK noPK.esl noPK.auth
 
 echo
 echo "Generated the following auth files:"
