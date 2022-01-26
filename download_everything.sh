@@ -2,7 +2,7 @@
 
 # OPTEE
 git clone https://git.linaro.org/people/paul.liu/systemready/optee_os.git
-git -C optee_os checkout paulliu-rsb3720
+git -C optee_os checkout paulliu-compulab-rpmb
 
 # TF-A
 git clone https://git.linaro.org/people/paul.liu/systemready/trusted-firmware-a.git
@@ -19,4 +19,4 @@ else
     git clone https://git.linaro.org/people/paul.liu/systemready/u-boot.git
 fi
 
-git -C u-boot checkout paulliu-rsb3720
+git -C u-boot checkout paulliu-rsb3720-2

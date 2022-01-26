@@ -17,9 +17,8 @@ cd "$O1"
 cp -v ../trusted-firmware-a/build/imx8mp/release/bl2.bin "$B"/bl31.bin
 cp -v ../trusted-firmware-a/build/imx8mp/release/fip.bin "$B"
 
-export ARCH=arm64
 export CROSS_COMPILE=aarch64-linux-gnu-
-export ATF_LOAD_ADDR=0x960000
+export ATF_LOAD_ADDR=0x970000
 
 make O="$B"
 
@@ -39,17 +38,6 @@ cat <<EOF > "$B"/capsule1.its
 		flash-bin {
 			description = "U-Boot binary on SPI Flash";
 			data = /incbin/("flash.bin");
-			compression = "none";
-			type = "firmware";
-			arch = "arm64";
-			load = <0>;
-			hash-1 {
-				algo = "sha1";
-			};
-		};
-		u-boot-itb {
-			description = "U-Boot binary";
-			data = /incbin/("u-boot.itb");
 			compression = "none";
 			type = "firmware";
 			arch = "arm64";

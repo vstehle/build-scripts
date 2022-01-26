@@ -1,5 +1,7 @@
 #!/bin/sh
 
+./build_edk2.sh
+
 cd optee_os
 ../build_optee.sh
 cd ..
