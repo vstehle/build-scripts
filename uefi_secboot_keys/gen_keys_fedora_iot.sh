@@ -29,7 +29,7 @@ sign-efi-sig-list \
 rm -rf noPK.esl
 touch noPK.esl
 sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+    -t "$(date --date='2 second' +'%Y-%m-%d %H:%M:%S')" \
     -k PK.key -c PK.crt PK noPK.esl noPK.auth
 
 # Add MS KEK
@@ -38,7 +38,7 @@ cert-to-efi-sig-list -g $GUID MicCorKEKCA2011_2011-06-24-2.crt KEK_MS.esl
 cat KEK_MS.esl >> KEK.esl
 # Add RedHat KEK
 sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+    -t "$(date --date='3 second' +'%Y-%m-%d %H:%M:%S')" \
     -c PK.crt -k PK.key KEK KEK.esl KEK.auth
 
 # Get Red Hat Test CA
@@ -80,7 +80,7 @@ done
 #done
 
 sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+    -t "$(date --date='4 second' +'%Y-%m-%d %H:%M:%S')" \
     -k KEK.key -c KEK.crt db db.esl db.auth
 
 echo
