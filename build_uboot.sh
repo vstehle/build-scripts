@@ -32,6 +32,9 @@ cat <<EOF > "${B}"/extraconfig2
 CONFIG_CMD_OPTEE_RPMB=y
 CONFIG_EFI_MM_COMM_TEE=y
 CONFIG_MMC_WRITE_PROTECT_ACTIVE_BOOT=y
+CONFIG_PROT_TCP=y
+CONFIG_PROT_TCP_SACK=y
+CONFIG_CMD_WGET=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig2
 fi
