@@ -8,7 +8,7 @@ git -C trusted-firmware-a checkout paulliu-imx8mm-emmc
 
 git clone https://github.com/ARMmbed/mbedtls.git
 git -C mbedtls checkout development
-git -C mbedtls checkout bd21b18a1faa08705ac6d9980794c181e645f53a -b test1
+git -C mbedtls checkout 068a13d909ec08a12a5f74289b18142d27977044 -b test1
 
 if [ x"$USER" = x"paulliu" ]; then
     git clone --reference ~/upstream/u-boot ssh://git@git.linaro.org/people/paul.liu/systemready/u-boot.git
