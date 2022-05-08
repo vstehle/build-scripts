@@ -28,6 +28,9 @@ CONFIG_DM_I2C_GPIO=y
 CONFIG_OF_BOARD_FIXUP=y
 CONFIG_CMD_DNS=y
 CONFIG_MISC=y
+CONFIG_PROT_TCP=y
+CONFIG_PROT_TCP_SACK=y
+CONFIG_CMD_WGET=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig
 
@@ -35,7 +38,6 @@ if [ x"$SDCARD" = x"" ]; then
 cat <<EOF > "${B}"/extraconfig2
 CONFIG_CMD_OPTEE_RPMB=y
 CONFIG_EFI_MM_COMM_TEE=y
-CONFIG_MMC_WRITE_PROTECT_ACTIVE_BOOT=y
 EOF
 ./scripts/kconfig/merge_config.sh -O ${B} ${B}/.config ${B}/extraconfig2
 fi

@@ -22,11 +22,9 @@ FLASHBIN=`find /tmp/uboot-imx8mp -name flash.bin`
 UBOOTITB=`find /tmp/uboot-imx8mp -name u-boot.itb`
 
 echo "flash.bin:" "$FLASHBIN"
-echo "u-boot.itb:" "$UBOOTITB"
 
 if [ x"$USER" = xpaulliu ]; then
     atftp -p -l "$FLASHBIN" -r flash.bin 192.168.66.10
-    atftp -p -l "$UBOOTITB" -r u-boot.itb 192.168.66.10
 fi
 
 if [ x"$USER" = xpaulliu ]; then

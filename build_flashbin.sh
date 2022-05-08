@@ -52,5 +52,6 @@ EOF
 
 cd "$B"
 "$B"/tools/mkimage -f capsule1.its capsule1.itb
-"$B"/tools/mkeficapsule --fit capsule1.itb --index 1 capsule1.bin
+"$B"/tools/mkeficapsule --index 1 --instance 0 --guid b5fb6f08-e142-4db1-97ea-5fd36b9be5b9 \
+    capsule1.itb capsule1.bin
 cd "$O1"
