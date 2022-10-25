@@ -1,0 +1,32 @@
+From 52184605867eaa566f2a239aa04704ff126e0bdf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Vincent=20Stehl=C3=A9?= <vincent.stehle@arm.com>
+Date: Tue, 25 Oct 2022 17:19:10 +0200
+Subject: [PATCH] Fix link with ld 2.39
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes the following link-time warning, which gets treated as fatal:
+
+  aarch64-linux-gnu-ld.bfd: warning: build.mx8mpevk/core/tee.elf has a LOAD segment with RWX permissions
+
+Signed-off-by: Vincent Stehlé <vincent.stehle@arm.com>
+---
+ core/arch/arm/kernel/link.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/core/arch/arm/kernel/link.mk b/core/arch/arm/kernel/link.mk
+index 922340f5..68abf251 100644
+--- a/core/arch/arm/kernel/link.mk
++++ b/core/arch/arm/kernel/link.mk
+@@ -15,7 +15,6 @@ link-ldflags += -pie -Bsymbolic -z notext -z norelro $(ldflag-apply-dynamic-relo
+ endif
+ link-ldflags += -T $(link-script-pp) -Map=$(link-out-dir)/tee.map
+ link-ldflags += --sort-section=alignment
+-link-ldflags += --fatal-warnings
+ link-ldflags += --gc-sections
+ 
+ link-ldadd  = $(LDADD)
+-- 
+2.35.1
+
